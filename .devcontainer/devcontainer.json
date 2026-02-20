@@ -1,0 +1,29 @@
+{
+  "name": "leaderboard-service (Java + Docker)",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080, 5432],
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot",
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
+    },
+    "5432": {
+      "label": "Postgres",
+      "visibility": "private"
+    }
+  },
+  "postCreateCommand": "./mvnw -q -DskipTests package",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
